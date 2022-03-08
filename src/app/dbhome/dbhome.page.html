@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>62114440046</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let tmp of this.stdobj | filter:searchTerm">
+      <ion-item>
+        <ion-item>
+          <ion-label style="text-align: center;">
+            <p>บันทึกเมื่อ: {{tmp.db_date}} ผู้โพส: {{tmp.db_who}}</p>
+            <br>
+            <ion-img style="width: 400px; height: 100%; margin: auto;" src="{{tmp.db_url_image}}"></ion-img>
+            <br>
+            <div>
+              <h2>{{tmp.db_name}}</h2>
+            </div>
+            <br>
+            <p>{{tmp.db_details}}</p>
+          </ion-label>
+        </ion-item>
+        <p>{{tmp.db_details}}</p>
+      </ion-item>
+
+
+      <ion-item-options class="itemOptions">
+        <!--add a class to the options -->
+
+        <ion-item-option class="itemOption" color="primary" (click)="presentPromptEdit(tmp)">
+          <!--add class to each individual option -->
+          <ion-icon size="large" name="create-outline">Edit</ion-icon>
+        </ion-item-option>
+
+        <ion-item-option class="itemOption" color="danger" (click)="presentConfirmDelete(tmp.id)">
+          <!--add class to each individual option -->
+          <ion-icon size="large" name="trash">Delete</ion-icon>
+        </ion-item-option>
+
+      </ion-item-options>
+
+    </ion-item-sliding>
+  </ion-list>
+
+
+  <div class="ion-text-center">
+    <ion-button expand="block" (click)="presentPromptAdd(tmp)" color="success" icon-start>
+      NEW
+      <ion-icon slot="end" name="add"></ion-icon>
+    </ion-button>
+  </div>
+
+</ion-content>
